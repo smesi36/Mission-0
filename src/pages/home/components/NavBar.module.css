@@ -1,0 +1,228 @@
+.navBarContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 5px 20px;
+}
+.titleContainer {
+  display: flex;
+  flex: 0 1 65%;
+  height: 100%;
+  align-items: center;
+  justify-content: start;
+}
+.titleContainer > p {
+  margin: 5px 5px;
+  font-weight: bold;
+  font-size: clamp(14px, 2vw, 20px);
+}
+.sphereShape {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1; /*locks aspect ratio */
+  background-color: crimson;
+  border-radius: 50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  margin: 1% 1% 1% 0;
+}
+
+/* navbar and login button */
+.navBarContainer > nav {
+  display: flex;
+  width: 35%;
+  /* height: 70%; */
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+/* prevents height override below 769px display */
+@media (min-width: 769px) {
+  .navBarContainer > nav {
+    display: flex;
+    /* width: 35%; */
+    height: 70%;
+  }
+}
+
+.navBarContainer ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex: 1 1 10%;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+.navBarContainer button {
+  width: 25%;
+  background-color: #e6e6e6;
+  border: none;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+  /* guidelines for touch-friendly tap targets */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.navBarContainer button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navBarContainer li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 31%;
+  height: 100%;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f1f1f1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transition: transform 0.2s ease;
+  /* guidelines for touch-friendly tap targets */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.navBarContainer li:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* (Hidden) Hamburger menu  base styling  */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+}
+
+/* Mobile responsive layout with hamburger menu*/
+
+@media (max-width: 768px) {
+  .navBarContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 5px;
+  }
+
+  /* to override this setting outside @media*/
+  .navBarContainer > nav {
+    display: none;
+  }
+
+ .navBarContainer > nav.navActive {
+  display: flex;
+ }
+
+  /* Toggles between active and hidden menus */
+  .navHidden {
+    display: none;
+  }
+
+  .navActive {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap:10px;
+    position: absolute;
+    top: 60px; /* adjust based on your layout */
+    right: 0;
+    background: white;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* without z index the menu will be faint */
+    z-index: 1;
+  }
+
+  .navActive ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0 0;
+  }
+
+  .navActive li {
+    width: 100%;
+    height: auto;
+    margin: 5px auto;
+  }
+
+  .navActive button {
+    margin: 10px auto;
+    width: 80%;
+  }
+
+  .sphereShape {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+
+  .hamburger span {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    left: 0;
+    transition: all 0.3 ease;
+  }
+
+  /* :nth-child() pseudo-class allows styling child elements in a specific pattern or order */
+  .hamburger span:nth-child(1) {
+    top: 0px;
+  }
+  .hamburger span:nth-child(2) {
+    top: 10px;
+  }
+  .hamburger span:nth-child(3) {
+    top: 20px;
+  }
+
+  /* toggles cross button on/off */
+  .hamburger.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
+}
+

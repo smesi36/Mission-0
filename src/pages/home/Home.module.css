@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.header {
+  display: flex;
+  width: 100%;
+  flex: 0 1 7%;
+  background-color: #f6f6f6;
+}
+
+.middleSection {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex: 0 1 60%;
+  z-index: 0;
+  /* background: url(../../assets/images/Marketing-degree.jpg);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  overflow: hidden;
+}
+
+.middleSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url(../../assets/images/Marketing-degree.jpg) no-repeat center
+    center / cover;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+  opacity: 0.3;
+}
+
+.middleSection > h1 {
+  font-size: clamp(24px, 5vw, 50px);
+  color: rgb(92, 92, 92);
+  margin: 3% 0 0 3%;
+  flex: 0 1 30%;
+  width: 35%;
+}
+
+.searchForm {
+  display: flex;
+  width: 100%;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0 0 30px 0;
+  gap: 5px;
+}
+
+.searchForm > input {
+  width: 20%;
+  height: 50px;
+  padding: 5px 10px;
+  background-color: #ffffff;
+  color: black;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.searchForm > button {
+  height: 50px;
+  width: 8%;
+  border-radius: 5px;
+  background-color: #e6e6e6;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.cardSection {
+  display: flex;
+  width: 100%;
+  flex: 0 1 33%;
+  align-items: end;
+  background-color: #f6f6f6;
+}
+
+/* Mobile responsive layout */
+
+@media (max-width: 768px) {
+
+  .main {
+    /* rigid setting of 100vh not a good idea for small screens*/
+    height: auto; 
+  }
+  .middleSection {
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    min-height: 45vh;
+  }
+
+  .middleSection > h1 {
+    width: 100%;
+    font-size: 30px;
+    text-align: left;
+  }
+
+  .searchForm {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .searchForm > input, .searchForm > button {
+    width: 80%;
+  }
+
+  .cardSection {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+    min-height: 40vh;
+  }
+}
