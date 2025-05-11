@@ -31,20 +31,16 @@
 }
 
 /* navbar and login button */
-.navBarContainer > nav {
-  display: flex;
-  width: 35%;
-  /* height: 70%; */
-  justify-content: space-evenly;
-  gap: 10px;
-}
 
-/* prevents height override below 769px display */
+/* for sizes bigger than 768px */
+
 @media (min-width: 769px) {
   .navBarContainer > nav {
     display: flex;
-    /* width: 35%; */
+    width: 35%;
     height: 70%;
+    justify-content: center;
+    gap: 10px;
   }
 }
 
@@ -133,10 +129,10 @@
   .navBarContainer > nav {
     display: none;
   }
-
- .navBarContainer > nav.navActive {
-  display: flex;
- }
+  /* enables nav menu in hamburger mode */
+  .navBarContainer > nav.navActive {
+    display: flex;
+  }
 
   /* Toggles between active and hidden menus */
   .navHidden {
@@ -148,12 +144,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap:10px;
+    /* gap: 10px; */
     position: absolute;
     top: 60px; /* adjust based on your layout */
     right: 0;
     background: white;
-    width: 100%;
+    width: 40%;
     height: auto;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     /* without z index the menu will be faint */
@@ -214,15 +210,14 @@
 
   /* toggles cross button on/off */
   .hamburger.open span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 8px;
+    transform: rotate(45deg);
+    top: 8px;
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px;
+  }
 }
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 8px;
-}
-}
-
